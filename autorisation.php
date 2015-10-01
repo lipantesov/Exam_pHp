@@ -31,3 +31,4 @@ $('.control').css('display','none');
 }
 
 }
+mysqli_close($link);
