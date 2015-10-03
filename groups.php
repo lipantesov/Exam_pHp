@@ -1,10 +1,12 @@
 <?php
 include 'connecting.php';
 echo "<meta charset='utf-8'>";
+echo "<script src='myScript.js'></script>";
+
 
 $link = mysqli_connect($host,$user,$password,$database) or die("Error:  ".mysqli_error($link));
 
-$query = "SELECT `groupName`, `numberPerson` FROM `groups`";
+$query = "SELECT `groupName` FROM `groups`";
 
 $result = mysqli_query($link,$query) or die('Error'.mysqli_error($link));
 
@@ -12,32 +14,26 @@ $rows = mysqli_num_rows($result);
 
 if($rows > 0)
 {
-//    echo "<table>";
-//    for ($i = 0 ; $i < $rows ; ++$i)
-//    {
-//        $row = mysqli_fetch_row($result);
-//        echo "<tr>";
-//        for ($j = 0 ; $j < 3 ; ++$j)
-//        {
-//            echo "<td>$row[$j]</td>";
-//
-//        }
-//        echo "</tr>";
-//    }
-//    echo "</table>";
-
-
-    echo "<ul>";
-    for ($i = 0 ; $i < $rows ; ++$i)
-    {
-        $row = mysqli_fetch_row($result);
-        echo "<li>";
-        for ($j = 0 ; $j < 3 ; ++$j)
+    echo "<h3>List of groups</h3>";
+        echo "<ul id='list_group'>";
+        for ($i = 0 ; $i < $rows ; ++$i)
         {
-            echo $row[$j];
+            $row = mysqli_fetch_row($result);
 
+
+            echo "<input type='checkbox' id='check' value=$row[0]>";
+
+                echo $row[0];
+
+        echo "<br>";
         }
-        echo "</li>";
-    }
-    echo "</ul>";
+        echo "</ul>";
+    if($_POST['idAction'] == 'addGroup')
+        echo "<button class='btn btn-success' id='btn_add'>add</button>";
+    elseif($_POST['idAction'] == 'setEval')
+        echo "<button class='btn btn-success' id='btn_select'>select</button>";
+    elseif($_POST['idAction'] == 'show')
+        echo "<button class='btn btn-success' id='btn_show'>show</button>";
+
 }
+mysqli_close($link);
