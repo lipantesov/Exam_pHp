@@ -15,7 +15,7 @@ if($result)
 {
     $rows = mysqli_num_rows($result); // количество полученных строк
 
-    echo "<table class='table table-bordered'><tr><th>Id</th><th>Name</th><th>Surname</th><th>Assessment</th><th>Date</th></tr>";
+    echo "<table class='table table-bordered' id='tbl_set_eval'><tr><th>Id</th><th>Name</th><th>Surname</th><th>Assessment</th><th>Date</th></tr>";
     for ($i = 0 ; $i < $rows ; ++$i)
     {
         $row = mysqli_fetch_row($result);
@@ -25,19 +25,15 @@ if($result)
         for ($j = 0 ; $j < 3 ;$j++)
         {
             echo "<td>$row[$j]</td>";
-//            if($j == 3)
-//            {
-//                echo "<td><input type='text' style='width: 50px'></td>";
-//                break;
-//            }
-
         }
 
         echo "<td><input type='text' style='width: 50px'></td>";
-        echo "<td>getDate()</td>";
+        $date_today = date('d.m.y');
+        echo "<td>$date_today</td>";
         echo "</tr>";
     }
     echo "</table>";
+    echo "<button class='btn btn-success' id='add_evaluation'>Save</button>";
 }
 
 

@@ -42,6 +42,15 @@ $(document).ready(function(){
 
         });
     });
+    //Функция сохранения оценок в журнал
+    $('#add_evaluation').click(function(){
+
+        alert(document.getElementById('#tbl_set_eval'));
+
+       $('#groups').load('add_a_note.php');
+    });
+
+
     //Функция просмотра информации
     $('#btn_show').click(function(){
 
