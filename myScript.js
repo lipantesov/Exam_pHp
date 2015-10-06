@@ -40,14 +40,44 @@ $(document).ready(function(){
 
        $('#groups').load('setEvaluation.php',{groupName:$(this).val()});
 
+
         });
     });
     //Функция сохранения оценок в журнал
     $('#add_evaluation').click(function(){
+        var table = document.getElementById('tbl_set_eval');
 
-        alert(document.getElementById('#tbl_set_eval'));
+        $row_count = table.rows.length;
 
-       $('#groups').load('add_a_note.php');
+        var str = document.getElementById('teacher_name').innerText;
+        var teacher = str.replace(/Teacher :/g, '');
+
+        for($i = 0;$i < $row_count+1;$i++)
+        {
+
+            var name = table.rows[$i+1].cells[1].innerHTML;
+            var surname = table.rows[$i+1].cells[2].innerHTML;
+
+            var asses = table.rows[$i+1].cells[3].firstChild.value;
+
+            var date = table.rows[$i+1].cells[4].innerHTML;
+
+
+
+
+            $('#groups').load('add_a_note.php',{
+                teacherName: teacher,
+                group:document.getElementById('group').innerHTML,
+                    studentName: name,
+                studentSurname: surname,
+                date:date,
+                asses:asses
+
+                });
+        }
+
+
+
     });
 
 

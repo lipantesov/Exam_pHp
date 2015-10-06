@@ -14,7 +14,7 @@ $result = mysqli_query($link,$query)or die(mysqli_error($link));
 if($result)
 {
     $rows = mysqli_num_rows($result); // количество полученных строк
-
+    echo "<h4 id='group'>$groupName</h4>";
     echo "<table class='table table-bordered' id='tbl_set_eval'><tr><th>Id</th><th>Name</th><th>Surname</th><th>Assessment</th><th>Date</th></tr>";
     for ($i = 0 ; $i < $rows ; ++$i)
     {
@@ -27,7 +27,7 @@ if($result)
             echo "<td>$row[$j]</td>";
         }
 
-        echo "<td><input type='text' style='width: 50px'></td>";
+        echo "<td><input type='text' value='4' style='width: 50px'></td>";
         $date_today = date('d.m.y');
         echo "<td>$date_today</td>";
         echo "</tr>";
