@@ -88,4 +88,12 @@ $(document).ready(function(){
         });
     });
 
+    $('#btn_enter_student').click(function(){
+
+       $('#groups').load('student_menu.php');
+$('.student_control').css('display','block');
+        $('.control').css('display','none');
+
+
+    });
 });

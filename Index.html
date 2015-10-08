@@ -14,7 +14,7 @@
     <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
     <div id="autorisation" class="dropdown">
         <button class="btn btn-info" type="button" data-toggle="dropdown" >Преподаватель</button>
-        <button class="btn btn-info" type="button">Студент</button>
+        <button class="btn btn-info" type="button" id="btn_enter_student">Студент</button>
         <div class="dropdown-menu">
             <form class="form-horizontal">
                 <h4>Авторизация</h4>
@@ -60,14 +60,20 @@
             <button class="btn btn-success" id="btn_set_evaluation">Выставить оценки</button>
                 <button class="btn btn-success" id="btn_show_info">Просмотр</button>
 
-            <!--<ul class="dropdown-menu dropdown-menu-right" id="listgroup">-->
-
-            <!--</ul>-->
-
-        <!--</div>-->
 
     </div>
+
     <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <div class="student_control" >
+        <lable>Выбрать преподавателя</lable>
+        <select id="list_teachers" class="form-control" style="width: 130px">
+            <option>Иванов</option>
+            <option>Петров</option>
+            <option>Сидоров</option>
+        </select>
+        <button class="btn btn-success" style="float: right">OK</button>
+
+    </div>
 </div>
 
 

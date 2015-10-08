@@ -18,6 +18,7 @@ if(mysqli_num_rows($result)>0)
     echo "Teacher :     ".$row[2]."     ".$row[1];
     echo "<script>
 $('.control').css('display','block');
+$('.student_control').css('display','none')
 </script>";
 }
     else
@@ -25,6 +26,7 @@ $('.control').css('display','block');
         echo "There is no teacher.";
         echo "<script>
 $('.control').css('display','none');
+
 </script>";
 
 }
