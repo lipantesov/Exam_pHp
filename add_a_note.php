@@ -19,13 +19,13 @@ VALUES ('$teacher','$group','$studentName','$studentSurname','$date',$assessment
 
 $result = mysqli_query($link,$query) or die(mysqli_error($link));
 
-$count = mysqli_num_rows($result);
 
-if($count > 0)
+
+if($result)
 {
-    echo "Add   ".$count."   nodes";
+    echo "Add   ".mysqli_num_rows($result)."   nodes";
 }
-
+mysqli_close($link);
 
 
 

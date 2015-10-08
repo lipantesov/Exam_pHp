@@ -13,11 +13,13 @@ $(document).ready(function(){
 
     //Функция добавляет группу преподавателю
  $('#btn_add').click(function() {
+
      $('#list_group input:checkbox:checked').each(function(){
 
          if(confirm('You want to add a group  - '+$(this).val()))
          {
-             $('#groups').load('addGroupOfTeachers.php',{groupName:$(this).val()});
+             $('#groups').load('addGroupOfTeachers.php',{groupId:$(this).val(),
+                 teacherId:document.getElementById('teacherID').innerHTML});
 
          }
 
@@ -26,20 +28,20 @@ $(document).ready(function(){
 //Выставить оценки
     $('#btn_set_evaluation').click(function(){
 
-        $('#groups').load('groups.php',{idAction: 'setEval'});
+        $('#groups').load('groups.php',{idAction: 'setEval',
+            teacherID:document.getElementById('teacherID').innerHTML});
     });
 //Показать информацию
     $('#btn_show_info').click(function(){
 
-        $('#groups').load('groups.php',{idAction: 'show'});
+        $('#groups').load('groups.php',{idAction: 'show',
+            teacherID:document.getElementById('teacherID').innerHTML});
     });
 
     //Функция выставление оценок
     $('#btn_select').click(function(){
         $('#list_group input:checkbox:checked').each(function(){
-
        $('#groups').load('setEvaluation.php',{groupName:$(this).val()});
-
 
         });
     });
@@ -62,9 +64,6 @@ $(document).ready(function(){
 
             var date = table.rows[$i+1].cells[4].innerHTML;
 
-
-
-
             $('#groups').load('add_a_note.php',{
                 teacherName: teacher,
                 group:document.getElementById('group').innerHTML,
@@ -82,8 +81,11 @@ $(document).ready(function(){
 
 
     //Функция просмотра информации
-    $('#btn_show').click(function(){
+    $('#btn_show').click(function() {
+        $('#list_group input:checkbox:checked').each(function () {
+            $('#groups').load('showStudents.php', {groupName: $(this).val()});
 
+        });
     });
 
 });
